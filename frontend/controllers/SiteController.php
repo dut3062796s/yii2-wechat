@@ -23,6 +23,7 @@ class SiteController extends Controller
     {
         $xml = Yii::$app->request->getRawBody();
         $return = (array)simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+        print_r($return);
         return [
             'ToUserName' => '', //接收方帐号（收到的OpenID）
             'FromUserName' => '', //开发者微信号
