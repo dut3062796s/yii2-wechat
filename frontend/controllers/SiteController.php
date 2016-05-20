@@ -42,7 +42,7 @@ class SiteController extends Controller
                 'FromUserName' => $params['ToUserName'], //开发者微信号
                 'CreateTime' => time(),
                 'MsgType' => 'text',
-                'Content' => '不认识'
+                'Content' => '能不能说一个靠谱的!'
             ];
         }
         return [
