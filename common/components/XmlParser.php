@@ -49,7 +49,7 @@ class XmlParser implements RequestParserInterface
     public function parse($rawBody, $contentType)
     {
         try {
-            $parameters = simplexml_load_string($rawBody);
+            $parameters = simplexml_load_string($rawBody, 'SimpleXMLElement', LIBXML_NOCDATA);
             $parameters = $this->asArray ? (array) $parameters : $parameters;
             return $parameters === null ? [] : $parameters;
         } catch (InvalidParamException $e) {
