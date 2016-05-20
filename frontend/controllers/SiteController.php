@@ -24,7 +24,7 @@ class SiteController extends Controller
     {
         $xml = Yii::$app->request->getRawBody();
         $params = (array)simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-        $name = trim($params['content']);
+        $name = trim($params['Content']);
         $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(['nick_name' => $name])->one();
         if (empty($model)) {
             return [
