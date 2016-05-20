@@ -39,13 +39,6 @@ class SiteController extends Controller
                 'Content' => '说人话!'
             ];
         }
-        return [
-            'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
-            'FromUserName' => $params['ToUserName'], //开发者微信号
-            'CreateTime' => time(),
-            'MsgType' => 'text',
-            'Content' => $name
-        ];
         $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(['nick_name' => $name])->one();
         if (empty($model)) {
             return [
