@@ -61,6 +61,5 @@ return [
             ],
         ],
     ],
-    'as RouteBehavior' => \frontend\behaviors\RouteBehavior::className(),
     'params' => $params,
 ];

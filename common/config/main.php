@@ -53,12 +53,5 @@ return [
         'queue' => [//队列组件化,方便替换
             'class' => \common\components\Queue::className(),
         ]
-    ],
-    'aliases' => [
-        '@common/logic' => '@common/models/logic',
-    ],
-    'as locale' => [
-        'class' => 'common\behaviors\LocaleBehavior',
-        'enablePreferredLanguage' => true
     ]
 ];
