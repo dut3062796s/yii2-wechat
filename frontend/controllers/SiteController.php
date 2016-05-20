@@ -12,18 +12,9 @@ use Yii;
  */
 class SiteController extends Controller
 {
-    public function beforeAction($action)
-    {
-        Yii::$container->set('yii\web\XmlResponseFormatter', [
-            'rootTag' => 'xml'
-        ]);
-        return parent::beforeAction($action);
-    }
-
     public function actionIndex()
     {
-        $xml = Yii::$app->request->getRawBody();
-        $params = (array)simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $params = Yii::$app->request->getBodyParams();
         $msgType = $params['MsgType'];
         $name = '';
         if ($msgType == 'voice') {
@@ -57,7 +48,6 @@ class SiteController extends Controller
             'Content' => $model->phone
         ];
     }
-
     private function checkSignature()
     {
         $signature = $_GET["signature"];

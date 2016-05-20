@@ -18,4 +18,15 @@ class Controller extends \yii\rest\Controller
         unset($behaviors['rateLimiter']);
         return $behaviors;
     }
+
+    public function renderText($text)
+    {
+        return [
+            'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
+            'FromUserName' => $params['ToUserName'], //开发者微信号
+            'CreateTime' => time(),
+            'MsgType' => 'text',
+            'Content' => '说人话!'
+        ];
+    }
 }

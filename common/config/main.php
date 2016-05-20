@@ -49,6 +49,19 @@ return [
                 ],
             ],
         ],
+        'request' => [
+            'parsers' => [
+                'application/xml' => 'common\components\XmlParser'
+            ]
+        ],
+        'response' => [
+            'formatters' => [
+                \yii\web\Response::FORMAT_XML => [
+                    'class' => 'yii\web\XmlResponseFormatter',
+                    'rootTag' => 'xml'
+                ]
+            ]
+        ],
         'config' => \common\components\Config::className(), //数据库动态配置
         'queue' => [//队列组件化,方便替换
             'class' => \common\components\Queue::className(),
