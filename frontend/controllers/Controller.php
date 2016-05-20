@@ -15,6 +15,7 @@ class Controller extends \yii\rest\Controller
     {
         $behaviors = parent::behaviors();
         unset($behaviors['contentNegotiator']['formats']['application/json']);
+        unset($behaviors['rateLimiter']);
         return $behaviors;
     }
 }
