@@ -21,7 +21,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $xml = Yii::$app->request->getBodyParams();
+        $xml = Yii::$app->request->getRawBody();
         $return = (array)simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         return [
             'ToUserName' => '', //接收方帐号（收到的OpenID）
