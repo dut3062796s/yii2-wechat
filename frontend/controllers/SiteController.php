@@ -27,7 +27,7 @@ class SiteController extends Controller
         $msgType = $params['MsgType'];
         $name = '';
         if ($msgType == 'voice') {
-            $name = trim($params['Recognition']);
+            $name = trim($params['Recognition'], '！');
         } elseif ($msgType == 'text') {
             $name = trim($params['Content']);
         } else {
