@@ -25,16 +25,20 @@ class SiteController extends Controller
         $xml = Yii::$app->request->getRawBody();
         $params = (array)simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         $msgType = $params['MsgType'];
-        if ($msgType != 'text') {
+        $name = '';
+        if ($msgType == 'voice') {
+            $name = trim($params['Recognition']);
+        } elseif ($msgType == 'text') {
+            $name = trim($params['Content']);
+        } else {
             return [
                 'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
                 'FromUserName' => $params['ToUserName'], //开发者微信号
                 'CreateTime' => time(),
                 'MsgType' => 'text',
-                'Content' => '打字好么,语音暂时识别不了!'
+                'Content' => '说人话!'
             ];
         }
-        $name = trim($params['Content']);
         $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(['nick_name' => $name])->one();
         if (empty($model)) {
             return [
