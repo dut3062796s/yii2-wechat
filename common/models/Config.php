@@ -12,7 +12,7 @@ use yii\caching\DbDependency;
  * @property string $value
  * @property string $desc
  */
-class Config extends \yii\db\ActiveRecord
+class Config extends ActiveRecord
 {
     const TYPE_ARRAY = 2;
     /**
@@ -48,12 +48,6 @@ class Config extends \yii\db\ActiveRecord
             'desc' => '配置描述',
             'type' => '配置类型',
             'extra' => '配置项',
-        ];
-    }
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className()
         ];
     }
 

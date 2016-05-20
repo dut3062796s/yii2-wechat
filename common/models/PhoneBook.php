@@ -14,7 +14,7 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class PhoneBook extends \yii\db\ActiveRecord
+class PhoneBook extends ActiveRecord
 {
     /**
      * @inheritdoc
