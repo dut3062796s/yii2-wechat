@@ -51,7 +51,8 @@ return [
         ],
         'request' => [
             'parsers' => [
-                'application/xml' => 'common\components\XmlParser'
+                'application/xml' => 'common\components\XmlParser',
+                'text/xml' => 'common\components\XmlParser'
             ]
         ],
         'response' => [
