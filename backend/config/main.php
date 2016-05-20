@@ -97,7 +97,7 @@ return [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-//            '*',
+            '*',
         ],
     ],
     'on beforeRequest' => function($event) {
