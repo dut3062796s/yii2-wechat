@@ -30,8 +30,7 @@ class PhoneBook extends ActiveRecord
     public function rules()
     {
         return [
-            [['true_name', 'nick_name', 'phone', 'created_at'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['true_name', 'nick_name', 'phone'], 'required'],
             [['true_name', 'nick_name'], 'string', 'max' => 50],
             [['phone'], 'string', 'max' => 15],
         ];
