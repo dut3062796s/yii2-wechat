@@ -39,6 +39,7 @@ class SiteController extends Controller
                 'Content' => '说人话!'
             ];
         }
+        echo $name;die;
         $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(['nick_name' => $name])->one();
         if (empty($model)) {
             return [
