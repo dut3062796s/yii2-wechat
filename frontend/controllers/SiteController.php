@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\PhoneBook;
 use Yii;
 /**
  * Created by PhpStorm.
@@ -23,12 +24,23 @@ class SiteController extends Controller
     {
         $xml = Yii::$app->request->getRawBody();
         $params = (array)simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $name = trim($params['content']);
+        $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(['nick_name' => $name])->one();
+        if (empty($model)) {
+            return [
+                'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
+                'FromUserName' => $params['ToUserName'], //开发者微信号
+                'CreateTime' => time(),
+                'MsgType' => 'text',
+                'Content' => '不认识'
+            ];
+        }
         return [
             'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
             'FromUserName' => $params['ToUserName'], //开发者微信号
             'CreateTime' => time(),
             'MsgType' => 'text',
-            'Content' => 'hehe'
+            'Content' => $model->phone
         ];
     }
 

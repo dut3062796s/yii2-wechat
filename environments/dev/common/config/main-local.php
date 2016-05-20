@@ -4,11 +4,11 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;dbname=yii',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=wechat',
             'username' => 'root',
             'password' => 'root1234',
             'charset' => 'utf8',
-            'tablePrefix' => 'pop_',
+            'tablePrefix' => 'we_',
             'enableSchemaCache' => true,
             // Duration of schema cache.
             'schemaCacheDuration' => 3600,
