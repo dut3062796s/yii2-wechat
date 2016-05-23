@@ -60,7 +60,20 @@ return [
                 ],
             ],
         ],
-
+        'request' => [
+            'parsers' => [
+                'application/xml' => 'common\components\XmlParser',
+                'text/xml' => 'common\components\XmlParser'
+            ]
+        ],
+        'response' => [
+            'formatters' => [
+                \yii\web\Response::FORMAT_XML => [
+                    'class' => 'yii\web\XmlResponseFormatter',
+                    'rootTag' => 'xml'
+                ]
+            ]
+        ],
     ],
     'params' => $params,
 ];

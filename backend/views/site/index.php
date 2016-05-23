@@ -12,7 +12,7 @@ $this->title = '控制面板';
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3><?=\common\models\PhoneBook::find()->count()?><sup style="font-size: 20px">篇</sup></h3>
+                        <h3><?=\common\models\PhoneBook::find()->count()?><sup style="font-size: 20px">个</sup></h3>
                         <p>电话薄数量</p>
                     </div>
                     <div class="icon">
