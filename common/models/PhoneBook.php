@@ -21,7 +21,7 @@ class PhoneBook extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'we_phone_book';
+        return '{{%phone_book}}';
     }
 
     /**
@@ -32,6 +32,7 @@ class PhoneBook extends ActiveRecord
         return [
             [['true_name', 'nick_name', 'phone'], 'required'],
             [['true_name', 'nick_name'], 'string', 'max' => 50],
+            [['gender'], 'integer'],
             [['phone'], 'string', 'max' => 15],
         ];
     }
@@ -43,11 +44,12 @@ class PhoneBook extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'true_name' => 'True Name',
-            'nick_name' => 'Nick Name',
-            'phone' => 'Phone',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'true_name' => '真名',
+            'nick_name' => '外号',
+            'phone' => '电话号码',
+            'gender' => '性别',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
     }
 }
