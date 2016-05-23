@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\PhoneBook;
 use Yii;
 use yii\db\Expression;
+use yii\helpers\Url;
 
 /**
  * Created by PhpStorm.
@@ -28,6 +29,9 @@ class SiteController extends Controller
         } else {
             return $this->renderText('说人话！');
         }
+        if ($name == '投票') {
+            return $this->renderText(Url::to(['/vote/index'], true));
+        }
         $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(new Expression("FIND_IN_SET('" . $name . "', nick_name)"))->one();
         if (empty($model)) {
             return $this->renderText('能不能说一个靠谱的！');
@@ -41,4 +45,5 @@ class SiteController extends Controller
             return $this->renderText('1.回复姓名或者外号可快速查找电话号码');
         }
     }
+
 }
