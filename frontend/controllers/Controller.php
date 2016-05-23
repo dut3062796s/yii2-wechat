@@ -22,11 +22,11 @@ class Controller extends \yii\rest\Controller
     public function renderText($text)
     {
         return [
-            'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
-            'FromUserName' => $params['ToUserName'], //开发者微信号
+            'ToUserName' => \Yii::$app->request->bodyParams['FromUserName'], //接收方帐号（收到的OpenID）
+            'FromUserName' => \Yii::$app->request->bodyParams['ToUserName'], //开发者微信号
             'CreateTime' => time(),
             'MsgType' => 'text',
-            'Content' => '说人话!'
+            'Content' => $text
         ];
     }
 }

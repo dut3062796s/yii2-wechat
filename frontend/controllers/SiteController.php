@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\PhoneBook;
 use Yii;
+
 /**
  * Created by PhpStorm.
  * User: yidashi
@@ -16,54 +17,17 @@ class SiteController extends Controller
     {
         $params = Yii::$app->request->getBodyParams();
         $msgType = $params['MsgType'];
-        $name = '';
         if ($msgType == 'voice') {
             $name = trim($params['Recognition'], '！');
         } elseif ($msgType == 'text') {
             $name = trim($params['Content']);
         } else {
-            return [
-                'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
-                'FromUserName' => $params['ToUserName'], //开发者微信号
-                'CreateTime' => time(),
-                'MsgType' => 'text',
-                'Content' => '说人话!'
-            ];
+            return $this->renderText('说人话！');
         }
         $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(['nick_name' => $name])->one();
         if (empty($model)) {
-            return [
-                'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
-                'FromUserName' => $params['ToUserName'], //开发者微信号
-                'CreateTime' => time(),
-                'MsgType' => 'text',
-                'Content' => '能不能说一个靠谱的!'
-            ];
+            return $this->renderText('能不能说一个靠谱的！');
         }
-        return [
-            'ToUserName' => $params['FromUserName'], //接收方帐号（收到的OpenID）
-            'FromUserName' => $params['ToUserName'], //开发者微信号
-            'CreateTime' => time(),
-            'MsgType' => 'text',
-            'Content' => $model->phone
-        ];
-    }
-    private function checkSignature()
-    {
-        $signature = $_GET["signature"];
-        $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"];
-
-        $token = '51siyuan';
-        $tmpArr = [$token, $timestamp, $nonce];
-        sort($tmpArr, SORT_STRING);
-        $tmpStr = implode( $tmpArr );
-        $tmpStr = sha1( $tmpStr );
-
-        if ($tmpStr == $signature) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->renderText($model->phone);
     }
 }

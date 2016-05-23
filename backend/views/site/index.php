@@ -12,8 +12,8 @@ $this->title = '控制面板';
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3><?=\common\models\Article::find()->count()?><sup style="font-size: 20px">篇</sup></h3>
-                        <p>当前内容(文章)</p>
+                        <h3><?=\common\models\PhoneBook::find()->count()?><sup style="font-size: 20px">篇</sup></h3>
+                        <p>电话薄数量</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-document"></i>
