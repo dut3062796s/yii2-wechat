@@ -18,7 +18,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cover')->widget(\yidashi\webuploader\Webuploader::className(), [
         'server' => \yii\helpers\Url::to(['/vote/webupload']),
-        'innerHTML' => '<button class="btn btn-primary">本地上传</button>'
+        'options' => [
+            'innerHTML' => '<button class="btn btn-primary">本地上传</button>'
+            ]
     ]) ?>
 
     <div class="form-group">
