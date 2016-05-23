@@ -18,6 +18,9 @@ class SiteController extends Controller
     {
         $params = Yii::$app->request->getBodyParams();
         $msgType = $params['MsgType'];
+        if ($msgType == 'event') {
+            return $this->event();
+        }
         if ($msgType == 'voice') {
             $name = trim($params['Recognition'], '！');
         } elseif ($msgType == 'text') {
@@ -30,5 +33,12 @@ class SiteController extends Controller
             return $this->renderText('能不能说一个靠谱的！');
         }
         return $this->renderText($model->phone);
+    }
+
+    public function event()
+    {
+        if (Yii::$app->request->bodyParams['Event'] == 'subscribe') {
+            return $this->renderText('1.回复姓名或者外号可快速查找电话号码');
+        }
     }
 }
