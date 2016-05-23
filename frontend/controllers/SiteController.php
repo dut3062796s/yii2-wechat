@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\PhoneBook;
+use common\models\Vote;
 use Yii;
 use yii\db\Expression;
 use yii\helpers\Url;
@@ -31,6 +32,16 @@ class SiteController extends Controller
         }
         if ($name == '投票') {
             return $this->renderText(Url::to(['/vote/index'], true));
+        }
+        // 参加投票
+        if (is_numeric($name)) {
+            $vote = Vote::find()->where(['id' => $name])->one();
+            if (!empty($vote)) {
+                $vote->num += 1;
+                $vote->save();
+                return $this->renderText('成功为' . $vote->id . '号选手投票,该选手现在票数为' . $vote->num . ',当前排在第' . Vote::find()->where(['>', 'num', $vote->num])->count() + 1 . '名!');
+            }
+
         }
         $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(new Expression("FIND_IN_SET('" . $name . "', nick_name)"))->one();
         if (empty($model)) {
