@@ -18,10 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cover')->widget(\yidashi\webuploader\Webuploader::className(), ['server' => \yii\helpers\Url::to(['/vote/webupload'])]) ?>
 
-    <?= $form->field($model, 'num')->textInput() ?>
-
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '参加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
