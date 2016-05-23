@@ -39,7 +39,7 @@ class SiteController extends Controller
             if (!empty($vote)) {
                 $vote->num += 1;
                 $vote->save();
-                return $this->renderText('成功为' . $vote->id . '号选手投票,该选手现在票数为' . $vote->num . ',当前排在第' . Vote::find()->where(['>', 'num', $vote->num])->count() + 1 . '名!');
+                return $this->renderText('成功为' . $vote->id . '号选手投票,该选手现在票数为' . $vote->num . ',当前排在第' . (Vote::find()->where(['>', 'num', $vote->num])->count() + 1) . '名!');
             }
 
         }
