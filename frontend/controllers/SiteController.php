@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\PhoneBook;
 use Yii;
+use yii\db\Expression;
 
 /**
  * Created by PhpStorm.
@@ -24,7 +25,7 @@ class SiteController extends Controller
         } else {
             return $this->renderText('说人话！');
         }
-        $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(['nick_name' => $name])->one();
+        $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(new Expression("FIND_IN_SET('" . $name . "', nick_name)"))->one();
         if (empty($model)) {
             return $this->renderText('能不能说一个靠谱的！');
         }

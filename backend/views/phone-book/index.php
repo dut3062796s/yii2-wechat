@@ -24,6 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     'id',
                     'true_name',
                     'nick_name',
+                    [
+                        'attribute' => 'gender',
+                        'value' => function($model) {
+                            return $model->getGenderList()[$model->gender];
+                        }
+                    ],
                     'phone',
                     'created_at:datetime',
                     // 'updated_at',

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'true_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nick_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nick_name')->widget(\common\widgets\tag\Tag::className(), ['delimiter' => ',']) ?>
 
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 

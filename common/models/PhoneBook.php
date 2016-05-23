@@ -52,4 +52,9 @@ class PhoneBook extends ActiveRecord
             'updated_at' => '更新时间',
         ];
     }
+
+    public function getGenderList()
+    {
+        return ['男', '女'];
+    }
 }
