@@ -16,7 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'cover')->widget(\yidashi\webuploader\Webuploader::className(), ['server' => \yii\helpers\Url::to(['/vote/webupload'])]) ?>
+    <?= $form->field($model, 'cover')->widget(\yidashi\webuploader\Webuploader::className(), [
+        'server' => \yii\helpers\Url::to(['/vote/webupload']),
+        'innerHTML' => '<button class="btn btn-primary">本地上传</button>'
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '参加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
