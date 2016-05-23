@@ -72,14 +72,10 @@ return [
     'modules' => [
         'admin' => [
             'class' => 'mdm\admin\Module',
-        ],
-        'database' => [
-            'class' => 'database\Module'
         ]
     ],
     'aliases' => [
         '@mdm/admin' => '@backend/mdmsoft/yii2-admin',
-        '@database' => '@backend/database'
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
