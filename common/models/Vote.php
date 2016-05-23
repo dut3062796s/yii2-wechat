@@ -31,7 +31,7 @@ class Vote extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'num', 'cover'], 'required'],
+            [['name', 'cover'], 'required'],
             [['description'], 'string'],
             [['num'], 'integer'],
             [['name'], 'string', 'max' => 20],
