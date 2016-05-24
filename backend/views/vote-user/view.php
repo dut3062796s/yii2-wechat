@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Vote */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Votes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '参赛者', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vote-view">
