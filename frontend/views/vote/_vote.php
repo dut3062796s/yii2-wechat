@@ -15,8 +15,10 @@ use common\helpers\Html;
         </a>
     </div>
     <div class="media-body">
-        <h2 class="media-heading"><?= Html::encode($model->name) ?></h2>
-        <?= Html::encode($model->description) ?>
-        <div>编号:<?= $model->id ?> 票数:<?= $model->num ?></div>
+        <a href="<?= \yii\helpers\Url::to(['view', 'id' => $model->id]) ?>">
+            <h2 class="media-heading"><?= Html::encode($model->name) ?></h2>
+            <?= Html::encode($model->description) ?>
+            <div>编号:<?= $model->id ?> 票数:<?= $model->num ?></div>
+        </a>
     </div>
 </div>
