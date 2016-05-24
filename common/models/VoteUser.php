@@ -57,6 +57,6 @@ class VoteUser extends ActiveRecord
 
     public function getRank()
     {
-        return Vote::find()->where(['>', 'num', $this->num])->count() + 1;
+        return self::find()->where(['>', 'num', $this->num])->count() + 1;
     }
 }
