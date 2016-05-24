@@ -7,8 +7,6 @@ use yii\helpers\Html;
 /* @var $model common\models\Vote */
 
 $this->title = '参加大赛';
-$this->params['breadcrumbs'][] = ['label' => '参赛人员列表', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vote-create">
 
