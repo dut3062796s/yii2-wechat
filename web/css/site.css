@@ -87,6 +87,7 @@ div.required label.control-label:after {
     color: red;
 }
 a:hover{text-decoration: none;}
+.navbar{margin-bottom:10px;}
 .navbar-nav > li {
     float: left;
 }
