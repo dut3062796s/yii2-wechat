@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\PhoneBook;
-use common\models\Vote;
+use common\models\VoteUser;
 use Yii;
 use yii\db\Expression;
 use yii\helpers\Url;
@@ -35,11 +35,11 @@ class SiteController extends Controller
         }
         // 参加投票
         if (is_numeric($name)) {
-            $vote = Vote::find()->where(['id' => $name])->one();
+            $vote = VoteUser::find()->where(['id' => $name])->one();
             if (!empty($vote)) {
                 $vote->num += 1;
                 $vote->save();
-                return $this->renderText('成功为' . $vote->id . '号选手投票,该选手现在票数为' . $vote->num . ',当前排在第' . (Vote::find()->where(['>', 'num', $vote->num])->count() + 1) . '名!');
+                return $this->renderText('成功为' . $vote->id . '号选手投票,该选手现在票数为' . $vote->num . ',当前排在第' . (VoteUser::find()->where(['>', 'num', $vote->num])->count() + 1) . '名!');
             }
 
         }
