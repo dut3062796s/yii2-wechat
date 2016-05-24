@@ -14,8 +14,8 @@ use common\helpers\Html;
 <h1 style="text-align:center"><?= $model->name ?></h1>
 <div class="action">
     <span class="time"><?= Html::icon('clock-o')?> 参赛日期 : <?= date('Y-m-d', $model->created_at) ?></span>
-    <span class="views"><?= Html::icon('eye')?> 当前票数 : <?= $model->num ?></span>
-    <span class="views"><?= Html::icon('eye')?> 当前名次 : <?= $model->rank ?></span>
+    <span class="views"><?= Html::icon('eye')?> 票数 : <?= $model->num ?></span>
+    <span class="views"><?= Html::icon('user')?> 名次 : <?= $model->rank ?></span>
 </div>
 <div class="cover"><?= \common\helpers\Html::img($model->cover) ?></div>
 <div class="content">
