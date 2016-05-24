@@ -40,7 +40,7 @@ class SiteController extends Controller
                 $vote->num += 1;
                 $vote->save();
                 $msg = '成功为%s号选手投票,该选手现在票数为%s,当前排在第%s名!详情:%s';
-                $rank = VoteUser::find()->where(['>', 'num', $vote->num])->count() + 1;
+                $rank = $vote->rank;
                 return $this->renderText(sprintf($msg, $vote->id, $vote->num, $rank, Url::to(['/vote/info', 'id' => 1], true)));
             }
         }

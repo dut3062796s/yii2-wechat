@@ -54,4 +54,9 @@ class VoteUser extends ActiveRecord
             'cover' => '封面',
         ];
     }
+
+    public function getRank()
+    {
+        return Vote::find()->where(['>', 'num', $this->num])->count() + 1;
+    }
 }

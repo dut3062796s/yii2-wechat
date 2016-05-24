@@ -9,7 +9,7 @@
 namespace common\helpers;
 
 use yii\helpers\Url;
-
+use rmrevin\yii\fontawesome\FA;
 
 class Html extends \yii\helpers\Html
 {
@@ -23,5 +23,10 @@ class Html extends \yii\helpers\Html
             $options['alt'] = '';
         }
         return static::tag('img', '', $options);
+    }
+
+    public static function icon($name, $options = [])
+    {
+        return FA::i($name, $options);
     }
 }
