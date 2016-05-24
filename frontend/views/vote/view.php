@@ -8,4 +8,5 @@
 ?>
 
 <h1><?= $model->name ?></h1>
+<div><?= \common\helpers\Html::img($model->cover) ?></div>
 <div><?= \yii\helpers\HtmlPurifier::process($model->description) ?></div>
