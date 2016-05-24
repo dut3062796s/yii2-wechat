@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Vote;
+use kucha\ueditor\UEditorAction;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -23,6 +24,13 @@ class VoteController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+        ];
+    }
+
+    public function actions()
+    {
+        return [
+            'upload' => UEditorAction::className()
         ];
     }
 

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(\kucha\ueditor\UEditor::className()) ?>
 
     <?= $form->field($model, 'begin_at')->widget(\kartik\datetime\DateTimePicker::className()) ?>
 
