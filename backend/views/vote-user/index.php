@@ -22,12 +22,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'columns' => [
                     'id',
-                    'title',
-                    'description',
-//                    'created_at',
+                    'name',
+                    'description:ntext',
+                    'created_at',
 //                    'updated_at',
-                     'begin_at:datetime',
-                     'end_at:datetime',
+                     'num',
 
                     ['class' => 'yii\grid\ActionColumn'],
                 ],

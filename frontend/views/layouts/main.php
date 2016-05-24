@@ -25,6 +25,22 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+    <?php
+    NavBar::begin([
+        'options' => [
+            'class' => 'navbar-inverse navbar-static-top',
+        ],
+    ]);
+    $menuItems = [];
+    $menuItems[] = ['label' => '活动说明', 'url' => ['/vote/info', 'id' => 1]];
+    $menuItems[] = ['label' => '参赛人员', 'url' => ['/vote/index']];
+    $menuItems[] = ['label' => '报名', 'url' => ['/vote/create']];
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav'],
+        'items' => $menuItems,
+    ]);
+    NavBar::end();
+    ?>
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 
 use common\models\Vote;
+use common\models\VoteUser;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use Yii;
@@ -25,10 +26,20 @@ class VoteController extends Controller
             ],
         ];
     }
+
+    public function actionInfo()
+    {
+        $id = Yii::$app->request->get('id');
+        $model = Vote::find()->where(['id' => $id])->one();
+        return $this->render('info', [
+            'model' => $model
+        ]);
+    }
+
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Vote::find()
+            'query' => VoteUser::find()
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider
@@ -42,7 +53,7 @@ class VoteController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Vote();
+        $model = new VoteUser();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);

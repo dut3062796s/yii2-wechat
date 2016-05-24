@@ -2,8 +2,9 @@
 
 namespace backend\controllers;
 
-use common\models\Vote;
+use common\models\VoteUser;
 use Yii;
+use common\models\Vote;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -12,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * VoteController implements the CRUD actions for Vote model.
  */
-class VoteController extends Controller
+class VoteUserController extends Controller
 {
     public function behaviors()
     {
@@ -118,7 +119,7 @@ class VoteController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Vote::findOne($id)) !== null) {
+        if (($model = VoteUser::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
