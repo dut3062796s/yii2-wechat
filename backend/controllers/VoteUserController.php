@@ -4,7 +4,6 @@ namespace backend\controllers;
 
 use common\models\VoteUser;
 use Yii;
-use common\models\Vote;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -34,7 +33,7 @@ class VoteUserController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Vote::find(),
+            'query' => VoteUser::find(),
             'sort' => [
                 'defaultOrder' => [
                     'id' => SORT_DESC
@@ -67,7 +66,7 @@ class VoteUserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Vote();
+        $model = new VoteUser();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index', 'id' => $model->id]);
@@ -114,7 +113,7 @@ class VoteUserController extends Controller
      * Finds the Vote model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Vote the loaded model
+     * @return VoteUser the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
