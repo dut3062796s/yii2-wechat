@@ -7,7 +7,7 @@
  */
 ?>
 <style>
-    .cover{margin:0 auto;max-width:95%;display:block;}
+    .cover img{margin:0 auto;max-width:95%;display:block;}
     .content img{margin:0 auto;max-width:95%;display:block;}
 </style>
 <h1 style="text-align:center"><?= $model->name ?></h1>
