@@ -12,7 +12,7 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class WxUser extends \yii\db\ActiveRecord
+class WxUser extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -28,7 +28,7 @@ class WxUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['openid', 'updated_at'], 'required'],
+            [['openid'], 'required'],
             [['is_subscribe', 'mp_id'], 'integer'],
             [['openid'], 'string', 'max' => 100],
         ];
