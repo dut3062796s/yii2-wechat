@@ -20,9 +20,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->widget(\kucha\ueditor\UEditor::className()) ?>
 
-    <?= $form->field($model, 'begin_at')->widget(\kartik\datetime\DateTimePicker::className()) ?>
+    <div class="form-group">
+    <?= \kartik\datetime\DateTimePicker::widget([
+        'name' => Html::getInputName($model, 'begin_at'),
+        'value' => Yii::$app->formatter->asDatetime($model->begin_at)
+    ])?>
+    </div>
 
-    <?= $form->field($model, 'end_at')->widget(\kartik\datetime\DateTimePicker::className()) ?>
+    <div class="form-group">
+    <?= \kartik\datetime\DateTimePicker::widget([
+        'name' => Html::getInputName($model, 'end_at'),
+        'value' => Yii::$app->formatter->asDatetime($model->end_at)
+    ])?>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
