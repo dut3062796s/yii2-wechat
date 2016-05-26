@@ -44,13 +44,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                [
-                    'pattern' => '<id:\d+>',
-                    'route' => 'article/view',
-                    'suffix' => '.html'
-                ],
-                'user/<id:\d+>' => '/user',
-                'tag/<name:\S+>' => '/article/tag'
+                '/<mpId:\d+>' => '/',
             ],
         ],
         'assetManager' => [
