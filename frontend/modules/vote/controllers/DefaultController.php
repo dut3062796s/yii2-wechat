@@ -39,9 +39,9 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
-        $id = Yii::$app->request->get('voteId');
+        $voteId = Yii::$app->request->get('voteId');
         $dataProvider = new ActiveDataProvider([
-            'query' => VoteUser::find()->where(['vote_id' => $id])
+            'query' => VoteUser::find()->where(['vote_id' => $voteId])
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider

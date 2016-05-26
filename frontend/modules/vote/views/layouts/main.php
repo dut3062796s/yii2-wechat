@@ -32,9 +32,9 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [];
-    $menuItems[] = ['label' => '活动说明', 'url' => ['info', 'id' => Yii::$app->request->get('voteId')]];
-    $menuItems[] = ['label' => '参赛人员', 'url' => ['index', 'id' => Yii::$app->request->get('voteId')]];
-    $menuItems[] = ['label' => '报名', 'url' => ['create', 'id' => Yii::$app->request->get('voteId')]];
+    $menuItems[] = ['label' => '活动说明', 'url' => ['info', 'voteId' => Yii::$app->request->get('voteId')]];
+    $menuItems[] = ['label' => '参赛人员', 'url' => ['index', 'voteId' => Yii::$app->request->get('voteId')]];
+    $menuItems[] = ['label' => '报名', 'url' => ['create', 'voteId' => Yii::$app->request->get('voteId')]];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => $menuItems,
