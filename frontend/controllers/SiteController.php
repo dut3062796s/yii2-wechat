@@ -60,7 +60,7 @@ class SiteController extends Controller
                     [
                         'Title' => $vote->title,
                         'Description' => $vote->description,
-                        'PicUrl' => $vote->cover,
+                        'PicUrl' => \Yii::getAlias('@static') . '/' . $vote->cover,
                         'Url' => Url::to(['/vote/index', 'id' => $vote->id], true)
                     ]
                 ];
