@@ -52,7 +52,7 @@ class SiteController extends Controller
         }
         if ($name == '投票') {
             // 获取当前正在进行中的投票
-            $vote = Vote::find()->where(['>', 'begin_at', time()])->andWhere(['<', 'end_at', time()])->one();
+            $vote = Vote::find()->where(['<', 'begin_at', time()])->andWhere(['>', 'end_at', time()])->one();
             if (empty($vote)) {
                 return $this->renderText('当前没有正在进行的投票活动!');
             } else {
