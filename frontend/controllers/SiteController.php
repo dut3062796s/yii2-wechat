@@ -2,11 +2,14 @@
 
 namespace frontend\controllers;
 
+use common\models\Mp;
 use common\models\PhoneBook;
 use common\models\VoteUser;
 use Yii;
 use yii\db\Expression;
 use yii\helpers\Url;
+use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 
 /**
  * Created by PhpStorm.
@@ -18,6 +21,18 @@ class SiteController extends Controller
 {
     public function actionIndex()
     {
+        $mpId = Yii::$app->request->get('mpId');
+        $mp = Mp::find()->where(['id' => $mpId])->one();
+        if (empty($mp)) {
+            throw new NotFoundHttpException('该公众号不存在!');
+        }
+        if (!$this->checkSignature($mp)) {
+            throw new BadRequestHttpException('非法请求');
+        }
+        if (Yii::$app->request->method == 'GET') {
+            echo Yii::$app->request->get('echostr');
+            exit;
+        }
         $params = Yii::$app->request->getBodyParams();
         $msgType = $params['MsgType'];
         if ($msgType == 'event') {
@@ -56,6 +71,22 @@ class SiteController extends Controller
         if (Yii::$app->request->bodyParams['Event'] == 'subscribe') {
             return $this->renderText('1.回复姓名或者外号可快速查找电话号码');
         }
+        return [];
+    }
+
+    private function checkSignature($mp)
+    {
+        $signature = Yii::$app->request->get('signature');
+        $timestamp = Yii::$app->request->get('timestamp');
+        $nonce = Yii::$app->request->get('nonce');
+
+        $token = $mp->token;
+        $tmpArr = [$token, $timestamp, $nonce];
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode($tmpArr);
+        $tmpStr = sha1($tmpStr);
+
+        return $tmpStr == $signature;
     }
 
 }
