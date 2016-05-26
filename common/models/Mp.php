@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "we_mp".
@@ -50,6 +51,18 @@ class Mp extends ActiveRecord
             'token' => 'Token',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'url' => '微信公众号平台要填的服务器地址'
         ];
+    }
+    public function attributeHints()
+    {
+        return [
+            'token' => '(对应微信公众号平台服务器配置里的Token)'
+        ];
+    }
+
+    public function getUrl()
+    {
+        return Url::to(['/', 'mpId' => $this->id], true);
     }
 }
