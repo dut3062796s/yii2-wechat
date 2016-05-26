@@ -53,7 +53,7 @@ class SiteController extends Controller
         $modules = Yii::$app->getModules();
         $result = '';
         foreach ($modules as $module) {
-            $module = Yii::createObject($module);
+            $module = Yii::createObject($module, ['mp' => $this->mp]);
             if ($module->hasMethod('process')) {
                 $result = $module->process($name);
                 if ($result) {
