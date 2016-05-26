@@ -23,9 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
                     'id',
                     'openid',
+                    'is_subscribe:boolean',
                     'created_at:datetime',
                     'updated_at:datetime',
-                    'is_subscribe',
 
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
