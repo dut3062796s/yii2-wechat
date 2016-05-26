@@ -50,9 +50,10 @@ class SiteController extends Controller
         } else {
             return $this->renderText('说人话！');
         }
-        $modules = Yii::$app->modules;
+        $modules = Yii::$app->getModules();
         $result = '';
         foreach ($modules as $module) {
+            $module = Yii::createObject($module);
             if ($module->hasMethod('process')) {
                 $result = $module->process($name);
                 if ($result) {
