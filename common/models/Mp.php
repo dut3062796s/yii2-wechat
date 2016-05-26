@@ -15,7 +15,7 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class Mp extends \yii\db\ActiveRecord
+class Mp extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -31,8 +31,7 @@ class Mp extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'app_id', 'app_secret', 'token', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['title', 'app_id', 'app_secret', 'token'], 'required'],
             [['title', 'app_id', 'app_secret', 'token'], 'string', 'max' => 100],
             [['title'], 'unique'],
         ];
@@ -45,7 +44,7 @@ class Mp extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => '公众号名称',
             'app_id' => 'App ID',
             'app_secret' => 'App Secret',
             'token' => 'Token',
