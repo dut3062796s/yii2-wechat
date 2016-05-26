@@ -33,7 +33,7 @@ class Module extends \yii\base\Module
                         'Title' => $vote->title,
                         'Description' => strip_tags($vote->description),
                         'PicUrl' => \Yii::getAlias('@static') . '/' . $vote->cover,
-                        'Url' => Url::to(['/vote', 'id' => $vote->id], true)
+                        'Url' => Url::to(['/vote', 'voteId' => $vote->id], true)
                     ]
                 ];
                 return $articles;
