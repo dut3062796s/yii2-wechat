@@ -37,6 +37,7 @@ class Vote extends ActiveRecord
                 return strtotime($value);
             }],
             [['title'], 'string', 'max' => 50],
+            [['cover'], 'string', 'max' => 255],
         ];
     }
 
@@ -48,6 +49,7 @@ class Vote extends ActiveRecord
         return [
             'id' => 'ID',
             'title' => '活动名',
+            'cover' => '封面',
             'description' => '活动说明',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
