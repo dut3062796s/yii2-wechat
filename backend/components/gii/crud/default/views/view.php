@@ -24,8 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-view">
 
     <p>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Update') ?>, ['update', <?= $urlParams ?>], ['class' => 'btn btn-primary']) ?>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Delete') ?>, ['delete', <?= $urlParams ?>], [
+        <?= "<?= " ?>Html::a('修改', ['update', <?= $urlParams ?>], ['class' => 'btn btn-primary']) ?>
+        <?= "<?= " ?>Html::a('删除', ['delete', <?= $urlParams ?>], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => <?= $generator->generateString('Are you sure you want to delete this item?') ?>,
