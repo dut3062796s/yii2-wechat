@@ -30,10 +30,10 @@ class SiteController extends Controller
         if (empty($this->mp)) {
             throw new NotFoundHttpException('该公众号不存在!');
         }
-        if (!$this->checkSignature()) {
-            throw new BadRequestHttpException('非法请求');
-        }
         if (Yii::$app->request->method == 'GET') {
+            if (!$this->checkSignature()) {
+                throw new BadRequestHttpException('非法请求');
+            }
             echo Yii::$app->request->get('echostr');
             exit;
         }
