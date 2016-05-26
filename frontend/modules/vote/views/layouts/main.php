@@ -32,9 +32,9 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [];
-    $menuItems[] = ['label' => '活动说明', 'url' => ['/vote/info', 'id' => 1]];
-    $menuItems[] = ['label' => '参赛人员', 'url' => ['/vote/index']];
-    $menuItems[] = ['label' => '报名', 'url' => ['/vote/create']];
+    $menuItems[] = ['label' => '活动说明', 'url' => ['info', 'id' => 1]];
+    $menuItems[] = ['label' => '参赛人员', 'url' => ['index']];
+    $menuItems[] = ['label' => '报名', 'url' => ['create']];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => $menuItems,

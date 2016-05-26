@@ -6,7 +6,7 @@
  * Time: 下午4:56
  */
 
-namespace frontend\controllers;
+namespace frontend\modules\vote\controllers;
 
 
 use common\models\Vote;
@@ -16,7 +16,7 @@ use yii\web\Controller;
 use Yii;
 use yii\web\NotFoundHttpException;
 
-class VoteController extends Controller
+class DefaultController extends Controller
 {
     public function actions()
     {

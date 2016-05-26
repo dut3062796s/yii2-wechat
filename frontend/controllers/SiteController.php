@@ -50,6 +50,7 @@ class SiteController extends Controller
         } else {
             return $this->renderText('说人话！');
         }
+        
         if ($name == '投票') {
             // 获取当前正在进行中的投票
             $vote = Vote::find()->where(['<', 'begin_at', time()])->andWhere(['>', 'end_at', time()])->one();

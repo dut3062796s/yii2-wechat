@@ -9,8 +9,6 @@
 namespace frontend\controllers;
 
 
-use yii\helpers\Url;
-
 class Controller extends \yii\rest\Controller
 {
     public function behaviors()
@@ -21,6 +19,11 @@ class Controller extends \yii\rest\Controller
         return $behaviors;
     }
 
+    /**
+     * 回复文字
+     * @param $text
+     * @return array
+     */
     public function renderText($text)
     {
         return [
@@ -32,6 +35,11 @@ class Controller extends \yii\rest\Controller
         ];
     }
 
+    /**
+     * 回复图文
+     * @param array $articles
+     * @return array
+     */
     public function renderNews(array $articles)
     {
         return [

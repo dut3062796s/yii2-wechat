@@ -70,4 +70,7 @@ return [
         ],
     ],
     'params' => $params,
+    'modules' => [
+        'vote' => frontend\modules\vote\Module::className()
+    ]
 ];
