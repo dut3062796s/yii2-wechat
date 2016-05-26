@@ -59,7 +59,7 @@ class SiteController extends Controller
                 $articles = [
                     [
                         'Title' => $vote->title,
-                        'Description' => $vote->description,
+                        'Description' => strip_tags($vote->description),
                         'PicUrl' => \Yii::getAlias('@static') . '/' . $vote->cover,
                         'Url' => Url::to(['/vote/index', 'id' => $vote->id], true)
                     ]
