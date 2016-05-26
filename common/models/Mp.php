@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\base\Exception;
 use yii\helpers\Url;
 
 /**
@@ -63,6 +64,9 @@ class Mp extends ActiveRecord
 
     public function getUrl()
     {
-        return Url::to(['/', 'mpId' => $this->id], true);
+        if (!isset(Yii::$app->params['frontendUrl'])) {
+            throw new Exception('必须设置前台访问地址');
+        }
+        return Yii::$app->params['frontendUrl'] . '/' . $this->id;
     }
 }
