@@ -38,6 +38,7 @@ class Vote extends ActiveRecord
             }],
             [['title'], 'string', 'max' => 50],
             [['cover'], 'string', 'max' => 255],
+            [['begin_at', 'end_at'], 'hasCurrent']
         ];
     }
 
@@ -57,6 +58,22 @@ class Vote extends ActiveRecord
             'end_at' => '结束时间',
             'mp_id' => '所属公众号'
         ];
+    }
+
+    /**
+     * 当前时间是否已经有存在的活动
+     */
+    public function hasCurrent($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            // 总投票个数
+            $count = self::find()->count();
+            // 和当前投票时间不冲突的投票个数
+            $noCount = self::find()->where(['>=', 'begin_at', $this->end_at])->orWhere(['<=', 'end_at', $this->begin_at])->count();
+            if ($count != $noCount) {
+                $this->addError($attribute, '同一时间不能有1个以上投票活动同时进行');
+            }
+        }
     }
 
     public function getMp()

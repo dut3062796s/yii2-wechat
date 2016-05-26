@@ -56,8 +56,12 @@ class VoteUser extends ActiveRecord
         ];
     }
 
+    /**
+     * 排名
+     * @return int
+     */
     public function getRank()
     {
-        return self::find()->where(['>', 'num', $this->num])->count() + 1;
+        return self::find()->where(['vote_id' => $this->vote_id])->andWhere(['>', 'num', $this->num])->count() + 1;
     }
 }
