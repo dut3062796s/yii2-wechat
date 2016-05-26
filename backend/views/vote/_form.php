@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'mp_id')->dropDownList(\common\models\Mp::find()->select('title')->indexBy('id')->column()) ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->widget(\kucha\ueditor\UEditor::className()) ?>

@@ -31,7 +31,7 @@ class Vote extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'begin_at', 'end_at'], 'required'],
+            [['title', 'description', 'begin_at', 'end_at', 'mp_id'], 'required'],
             [['description'], 'string'],
             [['begin_at', 'end_at'], 'filter', 'filter' => function($value){
                 return strtotime($value);
@@ -53,6 +53,12 @@ class Vote extends ActiveRecord
             'updated_at' => '更新时间',
             'begin_at' => '开始时间',
             'end_at' => '结束时间',
+            'mp_id' => '所属公众号'
         ];
+    }
+
+    public function getMp()
+    {
+        return $this->hasOne(Mp::className(), ['id' => 'mp_id']);
     }
 }

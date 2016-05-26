@@ -8,3 +8,6 @@
 ?>
 <h1><?= $model->title ?></h1>
 <div><?= $model->description ?></div>
+
+
+<b>投票方法: 关注公众号《 <?= $model->mp->title ?> 》,并回复你想投票的选手编码!</b>

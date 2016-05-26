@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/site.js',
+        'http://res.wx.qq.com/open/js/jweixin-1.0.0.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
