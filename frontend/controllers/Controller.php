@@ -34,20 +34,21 @@ class Controller extends \yii\rest\Controller
 
     public function renderNews($articles = [])
     {
+        $articles = [
+            'item' => [
+                'Title' => 'hehe',
+                'Description' => 'hehe',
+                'PicUrl' => 'http://image.51siyuan.cn/FoRmm00iYHHZg9XDEeC9-8ns23lv',
+                'Url' => Url::to(['/vote/index'], true)
+            ]
+        ];
         return [
             'ToUserName' => \Yii::$app->request->bodyParams['FromUserName'], //接收方帐号（收到的OpenID）
             'FromUserName' => \Yii::$app->request->bodyParams['ToUserName'], //开发者微信号
             'CreateTime' => time(),
             'MsgType' => 'news',
             'ArticleCount' => count($articles),
-            'Articles' => [
-                'item' => [
-                    'Title' => 'hehe',
-                    'Description' => 'hehe',
-                    'PicUrl' => 'http://image.51siyuan.cn/FoRmm00iYHHZg9XDEeC9-8ns23lv',
-                    'Url' => Url::to(['/vote/index'], true)
-                ]
-            ]
+            'Articles' => $articles
         ];
     }
 }
