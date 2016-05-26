@@ -88,6 +88,10 @@ class SiteController extends Controller
                 $user->save();
             }
             return $this->renderText($this->mp->subscribe);
+        } elseif (Yii::$app->request->bodyParams['Event'] == 'unsubscribe') {
+            $user = WxUser::find()->where(['mp_id' => $this->mp->id, 'openid' => Yii::$app->request->bodyParams['FromUserName']])->one();
+            $user->is_subscribe = 0;
+            $user->save();
         }
         return [];
     }

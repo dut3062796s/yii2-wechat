@@ -42,7 +42,7 @@ class WxUser extends ActiveRecord
         return [
             'id' => 'ID',
             'openid' => 'Openid',
-            'is_subcribe' => '是否关注',
+            'is_subscribe' => '是否关注',
             'mp_id' => '所属公众号',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'openid')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
     <?= $form->field($model, 'is_subscribe')->textInput() ?>
 
     <div class="form-group">
