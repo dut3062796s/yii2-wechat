@@ -50,7 +50,7 @@ class SiteController extends Controller
             return $this->renderText('说人话！');
         }
         if ($name == '投票') {
-            return $this->renderText(Url::to(['/vote/index'], true));
+            return $this->renderNews();
         }
         // 参加投票
         if (is_numeric($name)) {
