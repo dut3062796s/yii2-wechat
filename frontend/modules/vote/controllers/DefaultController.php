@@ -30,8 +30,8 @@ class DefaultController extends Controller
 
     public function actionInfo()
     {
-        $id = Yii::$app->request->get('id');
-        $model = Vote::find()->where(['id' => $id])->one();
+        $voteId = Yii::$app->request->get('voteId');
+        $model = $this->findVote($voteId);
         return $this->render('info', [
             'model' => $model
         ]);
@@ -39,8 +39,9 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
+        $id = Yii::$app->request->get('voteId');
         $dataProvider = new ActiveDataProvider([
-            'query' => VoteUser::find()
+            'query' => VoteUser::find()->where(['vote_id' => $id])
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider
@@ -54,8 +55,10 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
+        $voteId = Yii::$app->request->get('voteId');
+        $vote = $this->findVote($voteId);
         $model = new VoteUser();
-
+        $model->vote_id = $vote->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
@@ -104,6 +107,21 @@ class DefaultController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('选手不存在!');
+        }
+    }
+    /**
+     * Finds the Vote model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Vote the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findVote($id)
+    {
+        if (($model = Vote::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('活动不存在!');
         }
     }
 }
