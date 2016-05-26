@@ -19,14 +19,17 @@ use yii\web\NotFoundHttpException;
  */
 class SiteController extends Controller
 {
+    /* @var $mp \common\models\Mp */
+    public $mp;
+
     public function actionIndex()
     {
         $mpId = Yii::$app->request->get('mpId');
-        $mp = Mp::find()->where(['id' => $mpId])->one();
-        if (empty($mp)) {
+        $this->mp = Mp::find()->where(['id' => $mpId])->one();
+        if (empty($this->mp)) {
             throw new NotFoundHttpException('该公众号不存在!');
         }
-        if (!$this->checkSignature($mp)) {
+        if (!$this->checkSignature()) {
             throw new BadRequestHttpException('非法请求');
         }
         if (Yii::$app->request->method == 'GET') {
@@ -69,18 +72,18 @@ class SiteController extends Controller
     public function event()
     {
         if (Yii::$app->request->bodyParams['Event'] == 'subscribe') {
-            return $this->renderText('1.回复姓名或者外号可快速查找电话号码');
+            return $this->renderText($this->mp->subscribe);
         }
         return [];
     }
 
-    private function checkSignature($mp)
+    private function checkSignature()
     {
         $signature = Yii::$app->request->get('signature');
         $timestamp = Yii::$app->request->get('timestamp');
         $nonce = Yii::$app->request->get('nonce');
 
-        $token = $mp->token;
+        $token = $this->mp->token;
         $tmpArr = [$token, $timestamp, $nonce];
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);

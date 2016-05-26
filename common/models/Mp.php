@@ -4,7 +4,6 @@ namespace common\models;
 
 use Yii;
 use yii\base\Exception;
-use yii\helpers\Url;
 
 /**
  * This is the model class for table "we_mp".
@@ -24,7 +23,7 @@ class Mp extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'we_mp';
+        return '{{%mp}}';
     }
 
     /**
@@ -36,6 +35,7 @@ class Mp extends ActiveRecord
             [['title', 'app_id', 'app_secret', 'token'], 'required'],
             [['title', 'app_id', 'app_secret', 'token'], 'string', 'max' => 100],
             [['title'], 'unique'],
+            [['subscribe'], 'string']
         ];
     }
 
@@ -50,6 +50,7 @@ class Mp extends ActiveRecord
             'app_id' => 'App ID',
             'app_secret' => 'App Secret',
             'token' => 'Token',
+            'subscribe' => '关注时回复内容',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'url' => '微信公众号平台要填的服务器地址'
@@ -67,6 +68,6 @@ class Mp extends ActiveRecord
         if (!isset(Yii::$app->params['frontendUrl'])) {
             throw new Exception('必须设置前台访问地址');
         }
-        return Yii::$app->params['frontendUrl'] . '/' . $this->id;
+        return Yii::$app->params['frontendUrl'] . $this->id;
     }
 }
