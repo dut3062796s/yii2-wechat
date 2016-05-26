@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Mp */
 
-$this->title = 'Create Mp';
-$this->params['breadcrumbs'][] = ['label' => 'Mps', 'url' => ['index']];
+$this->title = '添加新公众号';
+$this->params['breadcrumbs'][] = ['label' => '公众号', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mp-create">
