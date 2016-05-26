@@ -33,7 +33,7 @@ class VoteUser extends ActiveRecord
         return [
             [['name', 'cover'], 'required'],
             [['description'], 'string'],
-            [['num'], 'integer'],
+            [['num', 'vote_id'], 'integer'],
             [['name'], 'string', 'max' => 20],
             [['cover'], 'string', 'max' => 255],
         ];
@@ -46,6 +46,7 @@ class VoteUser extends ActiveRecord
     {
         return [
             'id' => 'ID',
+            'vote_id' => '投票活动',
             'name' => '名字',
             'description' => '简介',
             'created_at' => '参加时间',
