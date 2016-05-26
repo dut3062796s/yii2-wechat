@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Mp;
 use common\models\PhoneBook;
 use common\models\VoteUser;
+use common\models\WxUser;
 use Yii;
 use yii\db\Expression;
 use yii\helpers\Url;
@@ -72,6 +73,20 @@ class SiteController extends Controller
     public function event()
     {
         if (Yii::$app->request->bodyParams['Event'] == 'subscribe') {
+            // 添加到关注表
+            $user = WxUser::find()->where(['mp_id' => $this->mp->id, 'openid' => Yii::$app->request->bodyParams['FromUserName']])->one();
+            if (empty($user)) {
+                $user = new WxUser();
+                $user->attributes = [
+                    'openid' => Yii::$app->request->bodyParams['FromUserName'],
+                    'mp_id' => $this->mp->id,
+                    'is_subscribe' => 1
+                ];
+                $user->save();
+            } else {
+                $user->is_subscribe = 1;
+                $user->save();
+            }
             return $this->renderText($this->mp->subscribe);
         }
         return [];

@@ -50,9 +50,9 @@ class Mp extends ActiveRecord
             'app_id' => 'App ID',
             'app_secret' => 'App Secret',
             'token' => 'Token',
-            'subscribe' => '关注时回复内容',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'subscribe' => '关注时自动回复内容',
+            'created_at' => '创建于',
+            'updated_at' => '更新于',
             'url' => '微信公众号平台要填的服务器地址'
         ];
     }
