@@ -30,7 +30,7 @@ class Module extends \yii\base\Module
             ];
             $output = Yii::$app->curl->get($api, $params);
             $str = "%s今日综合指数:%s,幸运色:%s,健康指数:%s,爱情指数:%s,财运指数:%s,幸运数字:%s,速配星座:%s,详情:%s,工作指数:%s";
-            $formatStr = sprintf($str, $output['all'], $output['color'], $output['health'], $output['love'], $output['money'], $output['number'], $output['QFriend'], $output['summary'], $output['work']);
+            $formatStr = sprintf($str, $name, $output['all'], $output['color'], $output['health'], $output['love'], $output['money'], $output['number'], $output['QFriend'], $output['summary'], $output['work']);
             return $formatStr;
         }
     }
