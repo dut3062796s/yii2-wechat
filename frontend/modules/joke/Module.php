@@ -18,7 +18,7 @@ class Module extends \yii\base\Module
     public function process($name)
     {
         $api = 'http://japi.juhe.cn/joke/content/text.from';
-        
+
         if($name == '笑话') {
             $params = [
                 'key' => 'c722c3da3a13044f0fad2b3b11030e6f',
