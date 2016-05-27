@@ -8,6 +8,8 @@
  */
 namespace frontend\modules\constellation;
 
+use Yii;
+
 class Module extends \yii\base\Module
 {
     public $mp;
