@@ -22,7 +22,8 @@ class Module extends \yii\base\Module
         ];
 
         $api = 'http://web.juhe.cn:8080/constellation/getAll';
-        if(in_array($name, $consArr) || in_array($name . '座', $consArr)) {
+        if($index = array_search($name, $consArr) || $index = array_search($name . '座', $consArr)) {
+            $name = $consArr[$index];
             $params = [
                 'key' => 'f88ec9fc05516bdae8f4916820b6c936',
                 'consName' => $name,
