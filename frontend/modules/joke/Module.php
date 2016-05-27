@@ -23,7 +23,9 @@ class Module extends \yii\base\Module
             $params = [
                 'key' => 'c722c3da3a13044f0fad2b3b11030e6f',
                 'page' => 1,
-                'pagesize' => 3
+                'pagesize' => 5,
+                'sort' => 'asc',
+                'time' => time() - 60 * 5
             ];
             $output = Yii::$app->curl->get($api, $params);
             $str = '';
