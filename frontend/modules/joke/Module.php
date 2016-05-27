@@ -17,15 +17,15 @@ class Module extends \yii\base\Module
 
     public function process($name)
     {
-        $api = 'http://japi.juhe.cn/joke/content/text.from';
+        $api = 'http://japi.juhe.cn/joke/content/list.from';
 
         if($name == '笑话') {
             $params = [
                 'key' => 'c722c3da3a13044f0fad2b3b11030e6f',
                 'page' => 1,
                 'pagesize' => 5,
-                'sort' => 'asc',
-                'time' => time() - 60
+                'sort' => 'desc',
+                'time' => time()
             ];
             $output = Yii::$app->curl->get($api, $params);
             $str = '';
