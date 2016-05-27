@@ -13,6 +13,8 @@ use yii\db\Expression;
 
 class Module extends \yii\base\Module
 {
+    public $mp;
+
     public function process($name)
     {
         // 电话
