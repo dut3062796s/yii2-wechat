@@ -28,7 +28,7 @@ class Module extends \yii\base\Module
             $output = Yii::$app->curl->get($api, $params);
             $str = '';
             foreach ($output['result']['data'] as $k => $joke) {
-                $str .= $k . '. ' . $joke['content'] . "\n";
+                $str .= ($k + 1) . '. ' . $joke['content'] . "\n";
             }
             return $str;
         }
