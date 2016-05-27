@@ -29,7 +29,7 @@ class Module extends \yii\base\Module
                 'type' => 'today'
             ];
             $output = Yii::$app->curl->get($api, $params);
-            $str = "%s今日综合指数:%s,\n幸运色:%s,\n健康指数:%s,\n爱情指数:%s,\n财运指数:%s,\n幸运数字:%s,\n速配星座:%s,\n工作指数:%s,\n详情:%s";
+            $str = "%s今日综合指数:%s\n幸运色:%s\n健康指数:%s\n爱情指数:%s\n财运指数:%s\n幸运数字:%s\n速配星座:%s\n工作指数:%s\n详情:%s";
             $formatStr = sprintf($str, $name, $output['all'], $output['color'], $output['health'], $output['love'], $output['money'], $output['number'], $output['QFriend'], $output['work'], $output['summary']);
             return $formatStr;
         }
