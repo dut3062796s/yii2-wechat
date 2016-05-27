@@ -25,7 +25,7 @@ class Module extends \yii\base\Module
                 'page' => 1,
                 'pagesize' => 5,
                 'sort' => 'asc',
-                'time' => time() - 60 * 5
+                'time' => time() - 60
             ];
             $output = Yii::$app->curl->get($api, $params);
             $str = '';
