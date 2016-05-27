@@ -71,6 +71,7 @@ return [
     ],
     'params' => $params,
     'modules' => [
-        'vote' => frontend\modules\vote\Module::className()
+        'vote' => frontend\modules\vote\Module::className(),
+        'constellation' => frontend\modules\constellation\Module::className(),
     ]
 ];

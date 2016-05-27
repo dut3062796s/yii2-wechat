@@ -50,6 +50,7 @@ return [
             ],
         ],
         'config' => \common\components\Config::className(), //数据库动态配置
+        'curl' => \common\components\Curl::className(),
         'queue' => [//队列组件化,方便替换
             'class' => \common\components\Queue::className(),
         ]
