@@ -64,13 +64,9 @@ class SiteController extends Controller
                 }
             }
         }
+        $result = $result ?: '抱歉,不认识';
         return is_array($result) ? $this->renderNews($result) : $this->renderText($result);
-        // 电话
-        $model = PhoneBook::find()->where(['true_name' => $name])->orWhere(new Expression("FIND_IN_SET('" . $name . "', nick_name)"))->one();
-        if (empty($model)) {
-            return $this->renderText('能不能说一个靠谱的！');
-        }
-        return $this->renderText($model->phone);
+
     }
 
     public function event()

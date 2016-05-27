@@ -73,5 +73,6 @@ return [
     'modules' => [
         'vote' => frontend\modules\vote\Module::className(),
         'constellation' => frontend\modules\constellation\Module::className(),
+        'phone' => frontend\modules\phone\Module::className(),
     ]
 ];

@@ -33,5 +33,6 @@ class Module extends \yii\base\Module
             $formatStr = sprintf($str, $name, $output['all'], $output['color'], $output['health'], $output['love'], $output['money'], $output['number'], $output['QFriend'], $output['work'], $output['summary']);
             return $formatStr;
         }
+        return null;
     }
 }
